@@ -1,6 +1,6 @@
 using System;
 
-class Addition2
+class Addition1
 {
    static string SumProblemString(int x, int y)
    {

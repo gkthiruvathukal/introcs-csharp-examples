@@ -2,7 +2,7 @@ using System;
 namespace IntroCS
 {
 /// A simple class / object example:
-   class Contact // nothing in here is marked static
+   public class Contact // nothing in here is marked static
    {
       private string name, phone, email;
 

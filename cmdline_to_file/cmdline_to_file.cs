@@ -3,13 +3,23 @@ using System.IO;
 
 namespace IntroCS
 {
-   class FileTest
+   public static class FileTest
    {
-      public static void Main (string[] args)
+      public static void WriteText(string path, string contents)
       {
-         var outf = new StreamWriter(args[0]);
-         outf.Write (args[1]);
-         outf.Close ();
+         using var outf = new StreamWriter(path);
+         outf.Write(contents);
+      }
+
+      public static void Main(string[] args)
+      {
+         if (args.Length != 2) {
+            Console.Error.WriteLine("Usage: cmdline_to_file <output-file> <contents>");
+            Environment.ExitCode = 1;
+            return;
+         }
+
+         WriteText(args[0], args[1]);
       }
    }
 }

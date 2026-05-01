@@ -3,6 +3,9 @@ Thumbs.db
 build/
 packages/
 obj/
+bin/
+**/obj/
+**/bin/
 *.dll
 *.exe
 *.pyc
