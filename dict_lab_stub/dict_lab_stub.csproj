@@ -1,57 +1,28 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{F6A12C85-A387-4FDA-B962-0525EEBF9371}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>dict_lab_stub</RootNamespace>
     <AssemblyName>dict_lab_stub</AssemblyName>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug</OutputPath>
-    <DefineConstants>DEBUG;</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Externalconsole>true</Externalconsole>
-    <PlatformTarget>x86</PlatformTarget>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <DebugType>full</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release</OutputPath>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Externalconsole>true</Externalconsole>
-    <PlatformTarget>x86</PlatformTarget>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="System" />
+    <ProjectReference Include="..\fio\fio.csproj" />
+    <ProjectReference Include="..\ui\ui.csproj" />
   </ItemGroup>
+
   <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="fake_help.cs" />
-    <Compile Include="file_util.cs" />
+    <None Update="help_not_defaults.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="help_not_responses.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="help_not_responses2.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+
   <ItemGroup>
-    <None Include="help_not_defaults.txt" />
-    <None Include="help_not_responses.txt" />
-    <None Include="help_not_responses2.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\fio\fio.csproj">
-      <Project>{38702508-4BEE-4055-B478-1F9FA30C1630}</Project>
-      <Name>fio</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ui\ui.csproj">
-      <Project>{DC88927E-04FA-4738-A07B-D5188AEAB924}</Project>
-      <Name>ui</Name>
-    </ProjectReference>
+    <Compile Remove="Properties/AssemblyInfo.cs" />
   </ItemGroup>
 </Project>

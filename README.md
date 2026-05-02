@@ -17,10 +17,42 @@ migration, but it is not the recommended build entry point on macOS.
 
 **Assumptions**
 
-You should have the following tools installed:
+You need the following installed to build this repository:
 
 - `.NET SDK 10.x`
 - network access for `dotnet restore` when NuGet packages are needed
+
+The important requirement is the full SDK, not just the runtime.
+
+If `dotnet` exists but only the runtime is installed, commands such as
+`dotnet build`, `dotnet test`, and `dotnet run --project` will still fail.
+
+On macOS, one straightforward installation path is:
+
+```bash
+brew install --cask dotnet-sdk
+```
+
+You can also install the macOS SDK package directly from Microsoft:
+
+- https://dotnet.microsoft.com/download/dotnet/10.0
+
+After installation, validate that the SDK is actually installed:
+
+```bash
+dotnet --info
+dotnet --list-sdks
+```
+
+`dotnet --list-sdks` should print at least one `10.0.x` SDK. If it prints
+nothing, then `dotnet build` and `dotnet run --project` will fail even if
+`dotnet` itself exists on your `PATH`.
+
+Expected shape of the verification output:
+
+```text
+10.0.x [/usr/local/share/dotnet/sdk]
+```
 
 Optional tools:
 
@@ -32,28 +64,52 @@ You do not need a separate `nuget` CLI for normal work in this repo.
 
 You do not need `Mono` for the migrated projects.
 
+In short, the required build dependency list is:
+
+- `.NET SDK 10.x`
+- internet access when restore is needed
+
+You do not need:
+
+- `Mono`
+- a separate `nuget` executable
+
 **Repository Status**
 
 The modern solution is currently:
 
-- [examples-modern-cli.sln](/Volumes/Work/introcs-csharp-examples/examples-modern-cli.sln:1)
+- [examples-modern-cli.slnx](/Volumes/Work/introcs-csharp-examples/examples-modern-cli.slnx:1)
+
+The separate stub-assignment solution is:
+
+- [examples-stubs-cli.slnx](/Volumes/Work/introcs-csharp-examples/examples-stubs-cli.slnx:1)
 
 Shared modern build configuration lives in:
 
 - [Directory.Build.props](/Volumes/Work/introcs-csharp-examples/Directory.Build.props:1)
 - [Directory.Packages.props](/Volumes/Work/introcs-csharp-examples/Directory.Packages.props:1)
 
-Only part of the repo has been migrated so far. Migrated examples build with
-the current `.NET` SDK on macOS. Legacy examples will be converted in batches.
+The repo now has separate current solutions for completed examples and stub
+assignments. Both build with the current `.NET` SDK on macOS.
 
 **Build**
 
 Restore and build the migrated solution:
 
 ```bash
-dotnet restore examples-modern-cli.sln
-dotnet build examples-modern-cli.sln --no-restore
+dotnet restore examples-modern-cli.slnx
+dotnet build examples-modern-cli.slnx --no-restore
 ```
+
+Restore and build the separate stub-assignment solution:
+
+```bash
+dotnet restore examples-stubs-cli.slnx
+dotnet build examples-stubs-cli.slnx --no-restore
+```
+
+If `dotnet build` reports `No .NET SDKs were found`, install a `.NET SDK`
+release rather than just the runtime, then rerun the commands above.
 
 Example output:
 
@@ -80,7 +136,7 @@ dotnet build addition1/addition1.csproj --no-restore
 
 For a migrated console example, use `dotnet run --project`.
 
-Example:
+Example command:
 
 ```bash
 dotnet run --project addition1/addition1.csproj
@@ -131,6 +187,12 @@ Run the tests with:
 ```bash
 dotnet restore cmdline_to_file.Tests/cmdline_to_file.Tests.csproj
 dotnet test cmdline_to_file.Tests/cmdline_to_file.Tests.csproj --no-restore
+```
+
+You can also run all migrated tests in the main solution:
+
+```bash
+dotnet test examples-modern-cli.slnx
 ```
 
 Verified output:

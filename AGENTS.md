@@ -42,7 +42,8 @@ the native `dotnet` commands, not a parallel build system.
 
 **Current Modern Entry Points**
 
-- modern solution: `examples-modern-cli.sln`
+- modern solution: `examples-modern-cli.slnx`
+- stub solution: `examples-stubs-cli.slnx`
 - shared build settings: `Directory.Build.props`
 - shared package versions: `Directory.Packages.props`
 
@@ -85,7 +86,7 @@ Current example:
 1. Replace the old legacy `.csproj` with an SDK-style project.
 2. Preserve the original source code structure unless a small compatibility fix
    is needed.
-3. Add the project to `examples-modern-cli.sln`.
+3. Add the project to the appropriate `.slnx` solution.
 4. Run `dotnet restore` on the project or solution.
 5. Run `dotnet build`.
 6. If the project has tests, move them into a separate test project and run
@@ -125,11 +126,12 @@ The README should describe the repo in its current transitional state:
 
 - `README.md`
 - `AGENTS.md`
-- `examples-modern-cli.sln`
+- `examples-modern-cli.slnx`
+- `examples-stubs-cli.slnx`
 - `Directory.Build.props`
 - `Directory.Packages.props`
 
 **Immediate Next Step**
 
-Continue converting the remaining simple standalone console examples in batches,
-while skipping examples that still depend on unmigrated support projects.
+Keep the non-stub and stub solutions separate, and use `.slnx` for current
+solution entry points.

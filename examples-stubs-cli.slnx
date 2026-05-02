@@ -1,0 +1,23 @@
+<Solution>
+  <Project Path="animal_lab_stub/animal_lab_stub.csproj" />
+  <Project Path="array_lab_stub/array_lab_stub.csproj" />
+  <Project Path="binary_searching/binary_searching.csproj" />
+  <Project Path="books_homework_stub/books_homework_stub.csproj" />
+  <Project Path="csproject_stub/csproject_stub.csproj" />
+  <Project Path="dict_lab_stub/dict_lab_stub.csproj" />
+  <Project Path="do_the_math_stub/do_the_math_stub.csproj" />
+  <Project Path="fio/fio.csproj" />
+  <Project Path="grade_file_homework_stub/grade_file_homework_stub.csproj" />
+  <Project Path="igame_stub/igame_stub.csproj" />
+  <Project Path="loop_lab_stub/loop_lab_stub.csproj" />
+  <Project Path="performance_lab_stub/performance_lab_stub.csproj" />
+  <Project Path="rational_ops_stub/rational_ops_stub.csproj" />
+  <Project Path="safe_number_input_stub/safe_number_input_stub.csproj" />
+  <Project Path="searching/searching.csproj" />
+  <Project Path="sorting/sorting.csproj" />
+  <Project Path="strange_seq_stub/strange_seq_stub.csproj" />
+  <Project Path="string_manip_stub/string_manip_stub.csproj" />
+  <Project Path="test_agree_stub/test_agree_stub.csproj" />
+  <Project Path="test_input_whole_stub/test_input_whole_stub.csproj" />
+  <Project Path="ui/ui.csproj" />
+</Solution>
