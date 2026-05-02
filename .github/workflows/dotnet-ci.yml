@@ -1,0 +1,38 @@
+name: dotnet-ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v5
+
+      - name: Set up .NET SDK 10.x
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Show .NET info
+        run: |
+          dotnet --info
+          dotnet --list-sdks
+
+      - name: Restore modern solution
+        run: dotnet restore examples-modern-cli.slnx
+
+      - name: Build modern solution
+        run: dotnet build examples-modern-cli.slnx --no-restore
+
+      - name: Test modern solution
+        run: dotnet test examples-modern-cli.slnx --no-build
+
+      - name: Restore stub solution
+        run: dotnet restore examples-stubs-cli.slnx
+
+      - name: Build stub solution
+        run: dotnet build examples-stubs-cli.slnx --no-restore
